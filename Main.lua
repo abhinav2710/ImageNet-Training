@@ -31,7 +31,7 @@ cmd:option('-type',               'cuda',                 'float or cuda')
 cmd:option('-bufferSize',         1280,                   'buffer size')
 cmd:option('-devid',              1,                      'device ID (if using CUDA)')
 cmd:option('-nGPU',               1,                      'num of gpu devices used')
-cmd:option('-constBatchSize',     false,                  'do not allow varying batch sizes - e.g for ccn2 kernel')
+cmd:option('-constBatchSize',     true,                  'do not allow varying batch sizes - e.g for ccn2 kernel')
 cmd:option('-startGPUID',         0,                      'GPU ID to start')
 
 cmd:text('===>Save/Load Options')
