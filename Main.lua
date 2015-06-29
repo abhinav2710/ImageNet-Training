@@ -32,12 +32,14 @@ cmd:option('-bufferSize',         1280,                   'buffer size')
 cmd:option('-devid',              1,                      'device ID (if using CUDA)')
 cmd:option('-nGPU',               1,                      'num of gpu devices used')
 cmd:option('-constBatchSize',     false,                  'do not allow varying batch sizes - e.g for ccn2 kernel')
+cmd:option('-startGPUID',         0,                      'GPU ID to start')
 
 cmd:text('===>Save/Load Options')
 cmd:option('-load',               '',                     'load existing net weights')
 cmd:option('-save',               os.date():gsub(' ',''), 'save directory')
 cmd:option('-optState',           false,                  'Save optimization state every epoch')
 cmd:option('-checkpoint',         0,                      'Save a weight check point every n samples. 0 for off')
+
 
 cmd:text('===>Data Options')
 cmd:option('-shuffle',            true,                  'shuffle training samples')
