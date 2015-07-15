@@ -113,9 +113,10 @@ end
 if opt.nGPU > 1 then
     local net = model
     model = nn.DataParallelTable(1)
+    print(opt.startGPUID)
     for i = 1, opt.nGPU do
-        cutorch.setDevice(i)
-        model:add(net:clone():cuda(), i)  -- Use the ith GPU
+        cutorch.setDevice(i+ opt.startGPUID)
+        model:add(net:clone():cuda(), i+opt.startGPUID)  -- Use the ith GPU
     end
     cutorch.setDevice(opt.devid)
 end
