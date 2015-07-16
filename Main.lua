@@ -169,6 +169,7 @@ local function Forward(DB, train)
     if not AllowVarBatch then SizeData = math.floor(SizeData/opt.batchSize)*opt.batchSize end
     local dataIndices = torch.range(1, SizeData, opt.bufferSize):long()
     if train and opt.shuffle then --shuflle batches from LMDB 
+        --dataIndices = dataIndices:index(1, torch.randperm(1280):long())
         dataIndices = dataIndices:index(1, torch.randperm(dataIndices:size(1)):long())
     end 
 
@@ -210,7 +211,7 @@ local function Forward(DB, train)
     local currLoss = 0
 
     BufferNext()
-
+    SizeData = 1000
     while NumSamples < SizeData do
 
         DB:Synchronize()
